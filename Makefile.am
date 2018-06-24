@@ -6,7 +6,7 @@ ACLOCAL_AMFLAGS = -I conf -I gl/m4
 aclocaldir=$(datadir)/aclocal
 pkgconfigdir=$(libdir)/pkgconfig
 
-AM_CPPFLAGS = -I$(top_srcdir)/gl -I$(top_srcdir)/GNU $(XML2_CFLAGS)
+AM_CPPFLAGS = -I$(top_srcdir)/gl -I$(top_srcdir)/GNU $(XML2_CFLAGS) $(TIRPC_CFLAGS)
 AM_CXXFLAGS = 
 
 if COMPILER_IS_GCC
@@ -53,7 +53,7 @@ man_MANS = getdap.1 dap-config.1
 	groff -t -e -mandoc -Tascii $< | col -bx > $@
 
 libparsers_la_SOURCES = $(GRAM_SRC) 
-libparsers_la_CPPFLAGS = $(XML2_CFLAGS)
+libparsers_la_CPPFLAGS = $(XML2_CFLAGS) $(TIRPC_CFLAGS)
 # Removed this because on CentOS 5 using gl/unistd.h with flex-generated
 # sources is broken - assume that flex is suitably portable on its own,
 # so the gl code is not needed anyway. jhrg 5/2/14 $(AM_CPPFLAGS)
